@@ -33,23 +33,9 @@ go test ./...
 ## Makefile
 
 ```bash
-# Build the app and run tests
-make all
-
-# Build only
 make build
 
-# Run without building
-make run
-
-# Run live-reload (optional)
-make watch
-
-# Run tests
-make test
-
-# Clean up binary
-make clean
+./recall.exe
 ```
 
 ## Project Structure (overview)

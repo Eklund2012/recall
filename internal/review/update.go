@@ -15,7 +15,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "enter", " ":
 			m.showAns = !m.showAns
 		case "j", "down":
-			if m.index < len(m.cards)-1 {
+			if m.index < len(m.store.Cards)-1 {
 				m.index++
 				m.showAns = false
 			}

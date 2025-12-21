@@ -1,11 +1,17 @@
+SHELL := /usr/bin/bash
+
+all: build test
+
 build:
-	go build -o recall cmd/root.go
+	go build -o recall.exe main.go
 
 run:
-	go run cmd/root.go
+	go run main.go
 
 test:
-	go test ./... -v
+	go test ./...
 
 clean:
-	rm -f recall
+	rm -f recall.exe
+
+.PHONY: all build run test clean
