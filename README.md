@@ -1,39 +1,69 @@
-# Project my_project
+# recall
 
-One Paragraph of project description goes here
+A simple command-line study helper to manage flashcards and review sessions.
+Build, add, and review study cards right from your terminal.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project running locally for development or testing.
 
-## MakeFile
+## Installation
+You can either build or run the CLI directly:
 
-Run build make command with tests
 ```bash
+# Run the application without building
+go run main.go
+
+# Build the binary
+go build -o recall main.go
+
+# Run tests
+go test ./...
+```
+
+## Usage
+```bash
+# Add a new card
+./recall add
+
+# Review cards interactively
+./recall review
+```
+
+## Makefile
+
+```bash
+# Build the app and run tests
 make all
-```
 
-Build the application
-```bash
+# Build only
 make build
-```
 
-Run the application
-```bash
+# Run without building
 make run
-```
 
-Live reload the application:
-```bash
+# Run live-reload (optional)
 make watch
-```
 
-Run the test suite:
-```bash
+# Run tests
 make test
-```
 
-Clean up binary from the last build:
-```bash
+# Clean up binary
 make clean
 ```
+
+## Project Structure (overview)
+```
+recall/
+├── cmd/        # Cobra commands
+├── internal/   # TUI & card logic
+├── main.go     # CLI entrypoint
+├── go.mod
+├── go.sum
+├── tools.go    # Tool dependencies (Cobra CLI)
+└── LICENSE
+```
+
+## License
+
+[MIT](LICENSE) © 2025 David Eklund
