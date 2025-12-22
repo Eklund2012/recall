@@ -18,7 +18,7 @@ var addCmd = &cobra.Command{
 }
 
 func runAdd(cmd *cobra.Command, args []string) {
-	store, err := cards.NewStore(dataFile)
+	store, err := cards.GetStore(dataFile)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,4 +1,4 @@
-package tui
+package review
 
 import "github.com/Eklund2012/recall/internal/cards"
 

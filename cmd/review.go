@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/Eklund2012/recall/internal/cards"
-	review "github.com/Eklund2012/recall/internal/review"
+	review "github.com/Eklund2012/recall/internal/tui/review"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/spf13/cobra"
 )
@@ -18,7 +18,7 @@ var reviewCmd = &cobra.Command{
 }
 
 func runReview(cmd *cobra.Command, args []string) {
-	store, err := cards.NewStore(dataFile)
+	store, err := cards.GetStore(dataFile)
 	if err != nil {
 		log.Fatal(err)
 	}

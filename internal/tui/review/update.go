@@ -1,4 +1,4 @@
-package tui
+package review
 
 import tea "github.com/charmbracelet/bubbletea"
 
