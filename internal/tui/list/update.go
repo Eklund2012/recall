@@ -17,16 +17,18 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "d":
 			if it, ok := m.list.SelectedItem().(item); ok {
 				if err := m.store.Delete(it.index); err != nil {
+					m.list.NewStatusMessage("⚠ Failed to delete")
 					return m, nil
 				}
 
 				// Refresh list after delete
 				m.list.SetItems(itemsFromStore(m.store))
+				m.list.NewStatusMessage("✓ Card deleted")
 			}
 		}
 
 	case tea.WindowSizeMsg:
-		m.list.SetSize(msg.Width, msg.Height)
+		m.list.SetSize(msg.Width, msg.Height-3)
 	}
 
 	var cmd tea.Cmd
