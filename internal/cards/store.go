@@ -81,3 +81,15 @@ func (s *Store) Delete(position int) error {
 
 	return s.Save()
 }
+
+func (s *Store) Update(position int, question, answer string) error {
+	if position < 1 || position > len(s.Cards) {
+		return fmt.Errorf("invalid card position")
+	}
+
+	idx := position - 1
+	s.Cards[idx].Question = question
+	s.Cards[idx].Answer = answer
+
+	return s.Save()
+}

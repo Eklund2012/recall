@@ -2,13 +2,23 @@ package list
 
 import (
 	"github.com/Eklund2012/recall/internal/cards"
+	"github.com/Eklund2012/recall/internal/tui/edit"
 	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/list"
 )
 
+type viewState int
+
+const (
+	listView viewState = iota
+	editView
+)
+
 type model struct {
-	list  list.Model
-	store *cards.Store
+	list      list.Model
+	editModel edit.Model
+	store     *cards.Store
+	state     viewState
 }
 
 func NewModel(store *cards.Store) model {
@@ -24,12 +34,14 @@ func NewModel(store *cards.Store) model {
 	l.AdditionalShortHelpKeys = func() []key.Binding {
 		return []key.Binding{
 			keys.Delete,
+			keys.Edit,
 		}
 	}
 
 	return model{
 		list:  l,
 		store: store,
+		state: listView,
 	}
 }
 

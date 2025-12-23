@@ -4,11 +4,16 @@ import "github.com/charmbracelet/bubbles/key"
 
 type keyMap struct {
 	Delete key.Binding
+	Edit   key.Binding
 }
 
 var keys = keyMap{
 	Delete: key.NewBinding(
 		key.WithKeys("d"),
 		key.WithHelp("d", "delete"),
+	),
+	Edit: key.NewBinding(
+		key.WithKeys("e"),
+		key.WithHelp("e", "edit"),
 	),
 }
