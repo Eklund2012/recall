@@ -5,11 +5,16 @@ import (
 )
 
 func (m model) View() string {
-	if len(m.store.Cards) == 0 {
+	deck, err := m.store.Active()
+	if err != nil {
+		// No active deck, quit or show a message
+		return "No active deck selected.\n"
+	}
+	if len(deck.Cards) == 0 {
 		return "No cards to review.\n"
 	}
 
-	c := m.store.Cards[m.index]
+	c := deck.Cards[m.index]
 	if c.Question == "" {
 		return "Card question is empty.\n"
 	}

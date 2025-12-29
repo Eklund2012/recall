@@ -12,7 +12,7 @@ var dataFile string
 var rootCmd = &cobra.Command{
 	Use:   "recall",
 	Short: "recall is a CLI study helper",
-	Long:  "recall is a simple command-line tool to help you study using flashcards or review sessions.",
+	Long:  "recall is a simple command-line tool to help you study using flashcards.",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

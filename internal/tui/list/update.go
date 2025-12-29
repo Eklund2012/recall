@@ -30,29 +30,36 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) updateList(msg tea.Msg) (tea.Model, tea.Cmd) {
+	deck, err := m.store.Active()
+	if err != nil {
+		m.list.NewStatusMessage("⚠ No active deck")
+		return m, nil
+	}
+
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "q", "ctrl+c":
 			return m, tea.Quit
 
+		// Edit key
 		case "e":
-			// Transition to edit mode
 			if it, ok := m.list.SelectedItem().(item); ok {
-				card := m.store.Cards[it.index-1]
+				card := deck.Cards[it.index-1]
 				m.editModel = edit.NewModel(card)
 				m.state = editView
 				return m, m.editModel.Init()
 			}
 
+		// Delete key
 		case "d":
 			if it, ok := m.list.SelectedItem().(item); ok {
-				if err := m.store.Delete(it.index); err != nil {
+				if err := m.store.DeleteCard(m.store.ActiveDeck, it.index); err != nil {
 					m.list.NewStatusMessage("⚠ Failed to delete")
 					return m, nil
 				}
 
-				// Refresh list after delete
+				// Refresh list
 				m.list.SetItems(itemsFromStore(m.store))
 				m.list.NewStatusMessage("✓ Card deleted")
 			}

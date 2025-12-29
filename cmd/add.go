@@ -44,15 +44,16 @@ func runAdd(cmd *cobra.Command, args []string) {
 		log.Fatal("Question and answer cannot be empty")
 	}
 
-	err = store.Add(cards.Card{
-		Question: question,
-		Answer:   answer,
-	})
+	deck, err := store.Active()
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("Card added successfully!")
+	deck.Cards = append(deck.Cards, cards.Card{
+		Question: question,
+		Answer:   answer,
+	})
+	store.Save()
+	fmt.Println("Flashcard added successfully!")
 }
 
 func init() {

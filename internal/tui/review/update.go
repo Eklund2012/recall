@@ -7,6 +7,12 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	deck, err := m.store.Active()
+	if err != nil {
+		// No active deck, quit or show a message
+		return m, tea.Quit
+	}
+
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.String() {
@@ -15,7 +21,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "enter", " ":
 			m.showAns = !m.showAns
 		case "j", "down":
-			if m.index < len(m.store.Cards)-1 {
+			if m.index < len(deck.Cards)-1 {
 				m.index++
 				m.showAns = false
 			}

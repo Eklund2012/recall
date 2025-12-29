@@ -46,15 +46,18 @@ func NewModel(store *cards.Store) model {
 }
 
 func itemsFromStore(store *cards.Store) []list.Item {
-	items := make([]list.Item, 0, len(store.Cards))
+	deck, err := store.Active()
+	if err != nil {
+		return []list.Item{}
+	}
 
-	for _, c := range store.Cards {
+	items := make([]list.Item, 0, len(deck.Cards))
+	for _, c := range deck.Cards {
 		items = append(items, item{
 			title: c.Question,
 			desc:  c.Answer,
 			index: c.Position,
 		})
 	}
-
 	return items
 }

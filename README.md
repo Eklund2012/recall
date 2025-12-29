@@ -21,7 +21,7 @@ A terminal-based flashcard management app built with Go.
 
 ```bash
 # Build the binary
-go build -o recall main.go
+go build -o recall.exe main.go
 
 # Or use make
 make build
@@ -54,6 +54,9 @@ recall/
 ├── tools.go    # Tool dependencies (Cobra CLI)
 └── LICENSE
 ```
+
+## Roadmap
+- y/n confirmation for deleting in recall list 
 
 ## License
 
