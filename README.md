@@ -1,6 +1,6 @@
 # recall
 
-A terminal-based flashcard management app built with Go.
+A terminal-based flashcard management app built with Go. Organize your flashcards into decks, review them interactively, and manage them directly from your terminal.
 
 ## Tech Stack
 
@@ -10,6 +10,7 @@ A terminal-based flashcard management app built with Go.
 
 ## Features
 
+- Deck management: create, select, and list multiple decks
 - Add flashcards (front/back)
 - List flashcards in an interactive TUI
 - Edit flashcards from the list view
@@ -32,14 +33,30 @@ go test ./...
 
 ## Usage
 
+### Deck Commands
 ```bash
-# Add a new flashcard
+# Show all deck commands
+./recall deck
+
+# Create a new deck
+./recall deck create --name "Biology"
+
+# Select an active deck
+./recall deck select --name "Biology"
+
+# List all decks
+./recall deck ls
+```
+
+### Flashcard commands
+```bash
+# Add a new flashcard to the active deck
 ./recall add
 
-# List all flashcards (interactive view with edit/delete)
+# List all flashcards in the active deck (interactive view with edit/delete)
 ./recall list
 
-# Start review session of flashcards
+# Start a review session for the active deck
 ./recall review
 ```
 
@@ -56,8 +73,14 @@ recall/
 ```
 
 ## Roadmap
-- y/n confirmation for deleting in recall list 
+- Add confirmation prompt (y/n) for deleting cards in list view
+- Export/import decks as JSON
+- Multiple-choice flashcard generation with AI
+- Review statistics and spaced repetition support
+- Add database support
+- Delete/edit decks
+- bubble tea / lipgloss for deck ls
 
 ## License
 
-[MIT](LICENSE) © 2025 David Eklund
+[MIT](LICENSE) **© 2025 David Eklund**
