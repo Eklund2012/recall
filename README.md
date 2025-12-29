@@ -80,6 +80,8 @@ recall/
 - Add database support
 - Delete/edit decks
 - bubble tea / lipgloss for deck ls
+- Shuffle cards
+- Implement the Go color package
 
 ## License
 
