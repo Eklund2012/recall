@@ -1,44 +1,49 @@
 # recall
 
-A simple command-line study helper to manage flashcards and review sessions.
-Build, add, and review study cards right from your terminal.
+A terminal-based flashcard management app built with Go.
 
-## Getting Started
+## Tech Stack
 
-These instructions will get you a copy of the project running locally for development or testing.
+- **Cobra** - CLI framework
+- **Bubble Tea** - Terminal UI framework
+- **Lipgloss** - Terminal styling
+
+## Features
+
+- Add flashcards (front/back)
+- List flashcards in an interactive TUI
+- Edit flashcards from the list view
+- Delete flashcards from the list view
+- Persistent JSON storage
+- Status messages in the TUI
 
 ## Installation
-You can either build or run the CLI directly:
 
 ```bash
-# Run the application without building
-go run main.go
-
 # Build the binary
 go build -o recall main.go
+
+# Or use make
+make build
 
 # Run tests
 go test ./...
 ```
 
 ## Usage
+
 ```bash
-# Add a new card
+# Add a new flashcard
 ./recall add
 
-# Review cards interactively
+# List all flashcards (interactive view with edit/delete)
+./recall list
+
+# Start review session of flashcards
 ./recall review
 ```
 
-## Makefile
-
-```bash
-make build
-
-./recall.exe
-```
-
-## Project Structure (overview)
+## Project Structure
 ```
 recall/
 ├── cmd/        # Cobra commands
