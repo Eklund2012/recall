@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package study_service;
+
+// This tells Go: "The generated code belongs in the 'gen' folder of my project"
+option go_package = "github.com/Eklund2012/recall/proto/gen/study_service";
+
+// The "contract" for the Study Engine
+service StudyEngine {
+  // Go sends text to Python to be turned into vectors
+  rpc IndexDocument (IndexRequest) returns (IndexResponse);
+
+  // Go asks a question, Python returns the best matches
+  rpc SearchNotes (SearchRequest) returns (SearchResponse);
+}
+
+// Data Go sends to Python to index
+message IndexRequest {
+  string content = 1;      // The actual text of the note
+  string file_path = 2;    // So we know where it came from
+  int32 line_number = 3;   // For precise citations
+}
+
+message IndexResponse {
+  bool success = 1;
+}
+
+// Data for searching
+message SearchRequest {
+  string query = 1;        // "How do goroutines work?"
+  int32 top_k = 2;         // How many results to return (e.g., 3)
+}
+
+message SearchResponse {
+  message Match {
+    string text = 1;       // The matching snippet
+    string source = 2;     // The filename
+    float score = 3;       // How confident the AI is (0.0 to 1.0)
+  }
+  repeated Match matches = 1; // A list of the best matches
+}
