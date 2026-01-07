@@ -35,3 +35,6 @@ main
 # Python virtual environment
 venv/
 __pycache__/
+
+# Database
+my.db

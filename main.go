@@ -4,15 +4,12 @@
 package main
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/Eklund2012/recall/cmd"
-	"github.com/Eklund2012/recall/internal/client"
+	"github.com/Eklund2012/recall/internal/db"
 )
 
 func main() {
-	fmt.Println("Starting Recall Search Test...")
+	/*fmt.Println("Starting Recall Search Test...")
 
 	// Check if the user provided a search term
 	if len(os.Args) < 2 {
@@ -23,7 +20,8 @@ func main() {
 	query := os.Args[1]
 
 	// Call the function from your internal/client package
-	client.CallSearch(query)
+	client.CallSearch(query)*/
 
+	db.InitDB()
 	cmd.Execute()
 }
