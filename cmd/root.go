@@ -43,6 +43,6 @@ func init() {
 	//rootCmd.PersistentFlags().StringVar(&dataFile, "datafile", home+string(os.PathSeparator)+".tridos.json", "data file to store todos")
 
 	// For simplicity, use local directory for now
-	rootCmd.PersistentFlags().StringVar(&dataFile, "datafile", ".tridos.json", "data file to store todos")
+	rootCmd.PersistentFlags().StringVar(&dataFile, "datafile", ".tridos.json", "data file to store decks and cards")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

@@ -26,6 +26,23 @@ func InitDB() {
 		fmt.Println(err)
 		return
 	}
-
 	fmt.Println(sqliteVersion)
+
+	_, err = createTable(db)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("Table decks created successfully.")
+}
+
+func createTable(db *sql.DB) (sql.Result, error) {
+	sql := `CREATE TABLE IF NOT EXISTS decks (
+        id INTEGER PRIMARY KEY,
+        name     TEXT NOT NULL,
+        population INTEGER NOT NULL,
+        area INTEGER NOT NULL
+    );`
+
+	return db.Exec(sql)
 }
